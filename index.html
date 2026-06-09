@@ -1,13 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mirim-cafe</title>
+    <title>회원가입 연습</title>
+    <link rel="stylesheet" href="src/auth.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <h1>회원가입</h1>
+    <div class="form">
+      <input type="email" id="email" placeholder="이메일 입력" />
+
+      <input type="password" id="password" placeholder="비밀번호 입력" />
+
+      <button id="signup-btn">가입하기</button>
+
+      <p id="message"></p>
+    </div>
+
+    <script type="module" src="/src/auth.js"></script>
   </body>
 </html>
