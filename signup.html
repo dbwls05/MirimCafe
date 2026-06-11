@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mirim Cafe 회원가입</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: "Pretendard", sans-serif;
+
+        background-image: url("./img/cafe.jpg");
+        background-size: cover;
+        background-position: center;
+
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.75);
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+
+        width: 650px;
+        padding: 50px 80px;
+
+        background: #b8d1c6;
+        border-radius: 30px;
+
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 60px;
+        font-weight: 500;
+        margin-bottom: 40px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 20px;
+      }
+
+      input {
+        width: 100%;
+        height: 55px;
+
+        padding: 0 15px;
+        margin-bottom: 20px;
+
+        border: none;
+        border-radius: 12px;
+
+        font-size: 16px;
+      }
+
+      button {
+        width: 250px;
+        height: 60px;
+
+        display: block;
+        margin: 30px auto 0;
+
+        border: none;
+        border-radius: 12px;
+
+        background: white;
+
+        font-size: 22px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #f3f3f3;
+      }
+
+      .loginText {
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      .loginText a {
+        color: #0066cc;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mirim Cafe</h1>
+
+      <form id="signup">
+        <label for="email">이메일</label>
+        <input type="email" id="email" />
+
+        <label for="nick">닉네임</label>
+        <input type="text" id="nick" />
+
+        <label for="pw">비밀번호</label>
+        <input type="password" id="pw" />
+
+        <label for="pwCheck">비밀번호 확인</label>
+        <input type="password" id="pwCheck" />
+
+        <button type="submit">회원가입</button>
+
+        <p class="loginText">
+          이미 계정이 있다면?
+          <a href="./login.html">로그인하기</a>
+        </p>
+      </form>
+    </div>
+  </body>
+</html>
