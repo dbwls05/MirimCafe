@@ -1,11 +1,16 @@
-import { supabase } from "./supabase";
+import { supabase } from "./supabase.js";
 
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("pw");
+const nickInput = document.getElementById("nick");
 const signupBtn = document.getElementById("signup-btn");
 
-console.log("signup.js 로드됨");
-signupBtn.addEventListener("click", async function () {
+const loginBtn = document.getElementById("login-btn");
+const message = document.getElementById("message");
+
+console.log(document.getElementById("signup-btn"));
+// console.log("signup.js 로드됨");
+signupBtn.addEventListener("submit", async () => {
   console.log("버튼 클릭됨");
 
   const email = emailInput.value;
