@@ -12,6 +12,13 @@ signupBtn.addEventListener("click", async function () {
   const password = passwordInput.value;
   const nickname = document.getElementById("nick").value;
 
+  const pwCheck = document.getElementById("pwCheck").value;
+
+  if (password !== pwCheck) {
+    alert("비밀번호가 일치하지 않습니다.");
+    return;
+  }
+
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -36,4 +43,6 @@ signupBtn.addEventListener("click", async function () {
   }
 
   alert("회원가입 완료!");
+
+  window.location.href = "/login";
 });
