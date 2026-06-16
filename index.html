@@ -12,7 +12,7 @@
       <header>
         <div class="logo">Mirim Cafe</div>
 
-        <div class="auth">
+        <div class="auth" id="auth-area">
           <a href="./login.html">로그인/회원가입</a>
         </div>
       </header>
@@ -20,7 +20,9 @@
       <section>
         <h2>내가 가입한 카페</h2>
 
-        <div class="joined-box">가입한 카페를 보려면 로그인하세요</div>
+        <div class="joined-box" id="joined-box">
+          가입한 카페를 보려면 로그인하세요
+        </div>
       </section>
 
       <section>
@@ -29,5 +31,6 @@
         <div class="cafe-list" id="cafeList">아직 카페가 없습니다</div>
       </section>
     </div>
+    <script type="module" src="./src/auth.js"></script>
   </body>
 </html>
