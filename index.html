@@ -8,19 +8,19 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="container" id="joined-box">
+    <div class="container">
       <header>
         <div class="logo">Mirim Cafe</div>
 
-        <div class="auth">
+        <div class="auth" id="auth-area">
           <a href="./login.html">로그인/회원가입</a>
         </div>
       </header>
 
       <section>
-        <div>
+        <div class="joined-header">
           <h2>내가 가입한 카페</h2>
-          <div class="cafe-list">카페 만들기</div>
+          <div class="create-cafe" id="create-cafe-btn">카페 만들기</div>
         </div>
 
         <div class="joined-box" id="joined-box">
@@ -31,7 +31,7 @@
       <section>
         <h2>전체 카페 목록</h2>
 
-        <div class="cafe-list" id="cafeList">아직 카페가 없습니다</div>
+        <div class="create-cafe" id="cafeList">아직 카페가 없습니다</div>
       </section>
     </div>
     <script type="module" src="./src/auth.js"></script>

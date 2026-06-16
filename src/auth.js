@@ -3,6 +3,22 @@ import { supabase } from "./supabase";
 const authArea = document.getElementById("auth-area");
 
 async function checkLogin() {
+  const createCafeBtn = document.getElementById("create-cafe-btn");
+
+  createCafeBtn.addEventListener("click", async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      alert("카페를 만들려면 먼저 로그인해주세요.");
+      window.location.href = "./login.html";
+      return;
+    }
+
+    window.location.href = "./create-cafe.html";
+  });
+
   const {
     data: { user },
   } = await supabase.auth.getUser();
