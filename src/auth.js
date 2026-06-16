@@ -24,6 +24,7 @@ async function checkLogin() {
 
   document.getElementById("logout-btn").addEventListener("click", async () => {
     await supabase.auth.signOut();
+    alert("로그아웃이 완료되었습니다!");
     location.reload();
   });
 
