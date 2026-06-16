@@ -3,7 +3,6 @@ import { supabase } from "./supabase";
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("pw");
 const signupBtn = document.getElementById("signup-btn");
-const message = document.getElementById("message");
 
 console.log("signup.js 로드됨");
 signupBtn.addEventListener("click", async function () {
@@ -11,24 +10,30 @@ signupBtn.addEventListener("click", async function () {
 
   const email = emailInput.value;
   const password = passwordInput.value;
+  const nickname = document.getElementById("nick").value;
 
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
   });
+  if (error) {
+    alert(error.message);
+    return;
+  }
 
-  console.log(data);
-  console.log(error);
-});
+  const user = data.user;
 
-signupBtn.addEventListener("click", async function () {
-  const email = emailInput.value;
-  const password = passwordInput.value;
-  const nickname = document.getElementById("nick").value;
-
-  const { data, error } = await supabase.auth.signUp({
-    //회원가입
+  const { error: profileError } = await supabase.from("profiles").insert({
+    id: user.id,
     email: email,
-    password: password,
+    nickname: nickname,
+    created_at: new Date().toISOString(),
   });
+
+  if (profileError) {
+    alert(profileError.message);
+    return;
+  }
+
+  alert("회원가입 완료!");
 });
