@@ -46,17 +46,47 @@ h2 {
 
 /* 내가 가입한 카페 */
 .joined-box {
-  width: 80%;
-  height: 70px;
-  margin: 0 auto;
+  width: 100%;
+  min-height: 140px;
+
+  display: flex;
+  gap: 20px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 20px;
+
   background: #ddd;
   border-radius: 20px;
+}
+
+/* 카페 카드 */
+
+.joined-empty {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  margin: auto;
+}
+
+.joined-cafe-card {
+  min-width: 250px;
+  height: 100px;
+
+  background: white;
+  border-radius: 15px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   font-size: 18px;
+  font-weight: 500;
+
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
 /* 카페 목록 */
@@ -110,4 +140,10 @@ a {
 
 .create-cafe {
   cursor: pointer;
+}
+
+.cafe-owner {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #777;
 }
