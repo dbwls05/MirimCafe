@@ -69,15 +69,19 @@ label {
 input {
   width: 100%;
   height: 55px;
-
   padding: 0 15px;
   margin-bottom: 20px;
 
-  border: none;
+  border: 2px solid transparent;
   border-radius: 12px;
 
-  font-size: 16px;
   background-color: var(--sage-tint);
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  border-color: var(--forest);
+  outline: none;
 }
 
 button {
