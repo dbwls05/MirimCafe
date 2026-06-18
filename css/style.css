@@ -257,3 +257,338 @@ a {
   font-size: 13px;
   color: #777;
 }
+
+:root {
+  --forest: #1b4332;
+  --pine: #2d6a4f;
+  --teal: #1f4d47;
+  --olive: #42592f;
+  --sage: #8faf9b;
+  --sage-tint: #e6eee4;
+  --cream: #f5f4ee;
+  --paper: #ffffff;
+  --ink: #1e231f;
+  --muted: #6e7768;
+  --line: #dee4d9;
+
+  --font-display: "Fraunces", serif;
+  --font-body:
+    "PretendardVariable", "Pretendard", -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(255, 255, 253);
+  font-family: "Pretendard", sans-serif;
+  color: #111;
+  margin-bottom: 50px;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* 헤더 */
+header {
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 50px;
+  font-weight: 500;
+  font-family: var(--font-display);
+}
+
+.auth {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#logout-btn {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 40px;
+  transition: all 0.5s ease;
+}
+
+#logout-btn:hover {
+  background-color: var(--pine);
+  color: white;
+}
+
+/* 섹션 */
+section {
+  margin-top: 40px;
+}
+
+h2 {
+  font-size: 34px;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.create-cafe {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+
+  background: var(--olive);
+  color: white;
+
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.5s ease;
+}
+
+.create-cafe:hover {
+  background: var(--forest);
+}
+
+/* 내가 가입한 카페 */
+.joined-box {
+  padding: 50px;
+  width: 100%;
+  min-height: 140px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  background: var(--cream);
+  border-radius: 20px;
+}
+
+.joined-box.guest {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.joined-box.member {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  align-items: stretch;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.empty-icon {
+  width: 50px;
+  height: 50px;
+  color: var(--forest);
+  padding: 10px;
+  background-color: var(--sage-tint);
+  border-radius: 50px;
+}
+
+.login-btn {
+  padding: 10px 18px;
+  border-radius: 30px;
+
+  border: var(--forest) solid 2px;
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.login-btn:hover {
+  background: var(--sage-tint);
+}
+
+/* 카페 카드 */
+
+.joined-empty {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  margin: auto;
+}
+.joined-cafe-card {
+  width: 100%;
+  min-width: 0;
+
+  height: 150px;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-shadow: var(--shadow-sm);
+
+  transition: 0.2s;
+}
+
+.joined-cafe-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.joined-cafe-card .cafe-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+/* 카페 목록 */
+.cafe-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.cafe-card {
+  background: white;
+
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  transition: 0.25s;
+  cursor: pointer;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.cafe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.cafe-image {
+  height: 220px;
+  background: #d9d9d9;
+}
+
+.cafe-info {
+  padding: 15px;
+}
+
+.cafe-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.cafe-desc {
+  font-size: 16px;
+  color: #444;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.joined-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-cafe {
+  cursor: pointer;
+}
+
+.cafe-owner {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #777;
+}
+
+.profile-menu {
+  position: relative;
+}
+
+#profile-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.dropdown-menu {
+  display: none;
+
+  position: absolute;
+  top: 35px;
+  right: 0;
+
+  width: 150px;
+
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  overflow: hidden;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.menu-item {
+  padding: 12px;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background: #f3f3f3;
+}
+
+body {
+  background: #eef3ee;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.profile-card {
+  width: 400px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.profile-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+#email,
+#created-at {
+  margin-top: 10px;
+  color: #666;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  height: 45px;
+}
