@@ -19,7 +19,7 @@ async function checkLogin() {
     window.location.href = "./create-cafe.html";
   });
 
-  const cafeList = document.getElementById("cafeList");
+  const cafeList = document.getElementById("cafe-list");
 
   const { data: cafes } = await supabase.from("cafes").select(`
     *,
@@ -112,7 +112,7 @@ async function checkLogin() {
     .single();
 
   authArea.innerHTML = `
-    ${profile.nickname}님
+    ${profile.nickname}님, 안녕하세요
     <button id="logout-btn">로그아웃</button>
   `;
 
@@ -124,6 +124,8 @@ async function checkLogin() {
 
   const joinedBox = document.getElementById("joined-box");
 
+  joinedBox.classList.remove("guest");
+  joinedBox.classList.add("member");
   const { data: memberships } = await supabase
     .from("cafe_members")
     .select("cafe_id")
@@ -157,20 +159,20 @@ async function checkLogin() {
     const memberCafes = joinedCafes.filter((cafe) => cafe.owner_id !== user.id);
 
     ownedCafes.forEach((cafe) => {
-      joinedBox.innerHTML += `<div class="joined-cafe-card">
-  <div>${cafe.name}</div>
-  <div class="cafe-owner">카페 주인 : ${cafe.profiles?.nickname ?? "알 수 없음"}
-  </div>
-</div>
+      joinedBox.innerHTML += `
+      <div class="joined-cafe-card">
+        <div class="cafe-name">${cafe.name}</div>
+        <div class="cafe-owner">카페 주인 : ${cafe.profiles?.nickname ?? "알 수 없음"}</div>
+      </div>
     `;
     });
 
     memberCafes.forEach((cafe) => {
-      joinedBox.innerHTML += `<div class="joined-cafe-card">
-  <div>${cafe.name}</div>
-  <div class="cafe-owner">카페 주인 : ${cafe.profiles?.nickname ?? "알 수 없음"}
-  </div>
-</div>
+      joinedBox.innerHTML += `
+      <div class="joined-cafe-card">
+        <div class="cafe-name">${cafe.name}</div>
+        <div class="cafe-owner">카페 주인 : ${cafe.profiles?.nickname ?? "알 수 없음"}</div>
+      </div>
     `;
     });
   }

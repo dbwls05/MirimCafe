@@ -13,9 +13,12 @@
         <div class="logo">Mirim Cafe</div>
 
         <div class="auth" id="auth-area">
-          <a href="./login.html">로그인/회원가입</a>
+          <a href="./login.html">로그인</a> /
+          <a href="./signup.html">회원가입</a>
         </div>
       </header>
+
+      <hr />
 
       <section>
         <div class="joined-header">
@@ -23,15 +26,29 @@
           <div class="create-cafe" id="create-cafe-btn">카페 만들기</div>
         </div>
 
-        <div class="joined-box" id="joined-box">
-          <div class="joined-empty">카페에 가입하려면 로그인하세요</div>
+        <div class="joined-box guest" id="joined-box">
+          <div class="empty-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="5" y="11" width="14" height="9" rx="2" />
+              <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+            </svg>
+          </div>
+          <div class="joined-empty">가입한 카페를 보려면 로그인하세요</div>
+          <a class="login-btn" href="./login.html">로그인하기</a>
         </div>
       </section>
 
       <section>
         <h2>전체 카페 목록</h2>
 
-        <div class="cafe-list" id="cafeList">카페가 로딩중입니다</div>
+        <div class="cafe-list" id="cafe-list">카페가 로딩중입니다</div>
       </section>
     </div>
     <script type="module" src="./src/auth.js"></script>
