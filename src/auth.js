@@ -49,54 +49,12 @@ async function checkLogin() {
   });
 
   document.querySelectorAll(".cafe-card").forEach((card) => {
-    card.addEventListener("click", async () => {
+    card.addEventListener("click", () => {
       const cafeId = card.dataset.id;
 
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-
-      if (!user) {
-        alert("카페에 가입하려면 로그인해주세요.");
-        window.location.href = "./login.html";
-        return;
-      }
-
-      const result = confirm("이 카페에 가입하시겠습니까?");
-
-      if (!result) {
-        return;
-      }
-
-      const { data: alreadyJoined } = await supabase
-        .from("cafe_members")
-        .select("*")
-        .eq("cafe_id", cafeId)
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      if (alreadyJoined) {
-        alert("이미 가입한 카페입니다.");
-        return;
-      }
-
-      const { error } = await supabase.from("cafe_members").insert({
-        cafe_id: cafeId,
-        user_id: user.id,
-      });
-
-      if (error) {
-        alert(error.message);
-        return;
-      }
-
-      alert("카페 가입 완료!");
-      location.reload();
-
-      // 가입 처리
+      location.href = `./cafe.html?id=${cafeId}`;
     });
   });
-
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -160,7 +118,7 @@ async function checkLogin() {
 
     ownedCafes.forEach((cafe) => {
       joinedBox.innerHTML += `
-      <div class="joined-cafe-card">
+      <div class="joined-cafe-card" data-id="${cafe.id}">
         <div class="cafe-name">${cafe.name}</div>
         <div class="cafe-owner">카페 주인 : ${cafe.profiles?.nickname ?? "알 수 없음"}</div>
       </div>
@@ -169,11 +127,18 @@ async function checkLogin() {
 
     memberCafes.forEach((cafe) => {
       joinedBox.innerHTML += `
-      <div class="joined-cafe-card">
+      <div class="joined-cafe-card" data-id="${cafe.id}">
         <div class="cafe-name">${cafe.name}</div>
         <div class="cafe-owner">카페 주인 : ${cafe.profiles?.nickname ?? "알 수 없음"}</div>
       </div>
     `;
+    });
+    document.querySelectorAll(".joined-cafe-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const cafeId = card.dataset.id;
+
+        location.href = `./cafe.html?id=${cafeId}`;
+      });
     });
   }
 }
