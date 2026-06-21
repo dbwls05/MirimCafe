@@ -47,16 +47,23 @@ async function loadPosts() {
 
   posts.forEach((post) => {
     postList.innerHTML += `
-      <div class="post-card">
-        <div class="post-title">
-          ${post.title}
-        </div>
-
-        <div class="post-date">
-          ${new Date(post.created_at).toLocaleDateString()}
-        </div>
+    <div class="post-card" data-id="${post.id}">
+      <div class="post-title">
+        ${post.title}
       </div>
-    `;
+
+      <div class="post-date">
+        ${new Date(post.created_at).toLocaleDateString()}
+      </div>
+    </div>
+  `;
+  });
+  document.querySelectorAll(".post-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const postId = card.dataset.id;
+
+      location.href = `post.html?id=${postId}`;
+    });
   });
 }
 const joinBtn = document.getElementById("join-btn");

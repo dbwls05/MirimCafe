@@ -297,16 +297,27 @@ body {
 
 /* 헤더 */
 header {
-  height: 120px;
+  height: 80px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  padding: 0 40px;
+
+  background-color: white;
+
+  border-bottom: 1px solid #ddd;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .logo {
   font-size: 50px;
   font-weight: 500;
   font-family: var(--font-display);
+  text-decoration: none;
+  color: black;
 }
 
 .auth {

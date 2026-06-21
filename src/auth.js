@@ -1,6 +1,6 @@
 import { supabase } from "./supabase";
 
-const authArea = document.getElementById("auth-area");
+const authArea = document.querySelector("#auth-area");
 
 async function checkLogin() {
   const createCafeBtn = document.getElementById("create-cafe-btn");
