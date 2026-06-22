@@ -27,3 +27,10 @@ document.getElementById("date").textContent = new Date(
 ).toLocaleString();
 
 document.getElementById("content").textContent = post.content;
+
+document.getElementById("author").textContent =
+  `작성자 : ${post.profiles.nickname}`;
+
+document.getElementById("date").textContent = new Date(
+  post.created_at,
+).toLocaleDateString("ko-KR");
