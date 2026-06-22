@@ -65,31 +65,61 @@ async function checkLogin() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("nickname")
+    .select("*")
     .eq("id", user.id)
     .single();
 
   authArea.innerHTML = `
-  <div class="profile-menu">
-    <button id="profile-btn">
-      ${profile.nickname}님 ▼
-    </button>
+<div class="profile-menu">
 
-    <div class="dropdown-menu" id="dropdown-menu">
-      <div class="menu-item" id="profile-page-btn">
-        프로필 보기
+  <img
+    id="profile-btn"
+    class="header-profile"
+    src="${profile.profile_image || "https://placehold.co/40x40"}"
+  />
+
+  <div class="dropdown-menu">
+
+    <div class="dropdown-user">
+      <div class="dropdown-name">
+        ${profile.nickname}
       </div>
 
-      <div class="menu-item" id="settings-btn">
-        설정
-      </div>
-
-      <div class="menu-item" id="logout-btn">
-        로그아웃
+      <div class="dropdown-email">
+        ${profile.email}
       </div>
     </div>
+
+    <div class="menu-divider"></div>
+
+    <div class="menu-item" id="profile-page">
+      프로필 보기
+    </div>
+
+    <div class="menu-item" id="settings-page">
+      설정
+    </div>
+
+    <div class="menu-item" id="logout-btn">
+      로그아웃
+    </div>
+
   </div>
+
+</div>
 `;
+
+  document.getElementById("profile-btn").addEventListener("click", () => {
+    document.querySelector(".dropdown-menu").classList.toggle("show");
+  });
+
+  document.getElementById("profile-page").addEventListener("click", () => {
+    location.href = "./profile.html";
+  });
+
+  document.getElementById("settings-page").addEventListener("click", () => {
+    location.href = "./settings.html";
+  });
 
   document.getElementById("logout-btn").addEventListener("click", async () => {
     await supabase.auth.signOut();

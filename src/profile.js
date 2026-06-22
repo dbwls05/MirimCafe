@@ -31,6 +31,10 @@ async function init() {
   ).textContent =
     "가입일 : " + new Date(profile.created_at).toLocaleDateString("ko-KR");
 
+  if (profile.profile_image) {
+    document.getElementById("profile-img").src = profile.profile_image;
+  }
+
   document.getElementById("edit-btn").addEventListener("click", async () => {
     const nickname = prompt("새 닉네임을 입력하세요", profile.nickname)?.trim();
 
@@ -68,3 +72,39 @@ async function init() {
 }
 
 init();
+
+const imageInput = document.getElementById("image-upload");
+
+imageInput.addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+
+  if (!file) return;
+
+  const fileName = `${user.id}-${Date.now()}`;
+
+  const { error } = await supabase.storage
+    .from("profile-images")
+    .upload(fileName, file, {
+      upsert: true,
+    });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  const { data } = supabase.storage
+    .from("profile-images")
+    .getPublicUrl(fileName);
+
+  const imageUrl = data.publicUrl;
+
+  await supabase
+    .from("profiles")
+    .update({
+      profile_image: imageUrl,
+    })
+    .eq("id", user.id);
+
+  location.reload();
+});

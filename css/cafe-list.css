@@ -1,0 +1,46 @@
+.cafe-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.cafe-card {
+  background: white;
+
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.cafe-card:hover {
+  transform: translateY(-5px);
+}
+
+.cafe-image {
+  height: 220px;
+  background: #d9d9d9;
+}
+
+.cafe-info {
+  padding: 15px;
+}
+
+.cafe-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.cafe-desc {
+  color: #444;
+}
+
+.cafe-owner {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #777;
+}
