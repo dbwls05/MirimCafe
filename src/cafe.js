@@ -100,6 +100,10 @@ async function checkRole(cafe) {
   }
 }
 
+document.getElementById("edit-cafe-btn").addEventListener("click", () => {
+  location.href = `edit-cafe.html?id=${cafeId}`;
+});
+
 document.getElementById("join-btn").addEventListener("click", async () => {
   const {
     data: { user },
