@@ -44,3 +44,9 @@
   font-size: 13px;
   color: #777;
 }
+
+@media (max-width: 768px) {
+  .cafe-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -71,3 +71,9 @@
   border: 2px solid var(--forest);
   color: var(--forest);
 }
+
+@media (max-width: 768px) {
+  .cafe-list {
+    grid-template-columns: 1fr;
+  }
+}

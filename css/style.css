@@ -99,3 +99,9 @@ h2 {
 
   border: 2px solid #ddd;
 }
+
+@media (max-width: 768px) {
+  .cafe-list {
+    grid-template-columns: 1fr;
+  }
+}
