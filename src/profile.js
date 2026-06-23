@@ -69,42 +69,57 @@ async function init() {
   document.getElementById("home-btn").addEventListener("click", () => {
     location.href = "./index.html";
   });
+
+  const imageInput = document.getElementById("image-upload");
+
+  imageInput.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    const fileName = `${user.id}-${Date.now()}`;
+
+    const { error } = await supabase.storage
+      .from("profile-images")
+      .upload(fileName, file, {
+        upsert: true,
+      });
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    const { data } = supabase.storage
+      .from("profile-images")
+      .getPublicUrl(fileName);
+
+    const imageUrl = data.publicUrl;
+
+    await supabase
+      .from("profiles")
+      .update({
+        profile_image: imageUrl,
+      })
+      .eq("id", user.id);
+
+    // location.reload();
+    document.getElementById("profile-img").src = imageUrl;
+
+    const headerProfile = document.getElementById("profile-btn");
+
+    if (headerProfile) {
+      headerProfile.src = imageUrl;
+    }
+
+    alert("프로필 사진이 변경되었습니다.");
+  });
+
+  document
+    .getElementById("profile-upload-area")
+    .addEventListener("click", () => {
+      document.getElementById("image-upload").click();
+    });
 }
 
 init();
-
-const imageInput = document.getElementById("image-upload");
-
-imageInput.addEventListener("change", async (e) => {
-  const file = e.target.files[0];
-
-  if (!file) return;
-
-  const fileName = `${user.id}-${Date.now()}`;
-
-  const { error } = await supabase.storage
-    .from("profile-images")
-    .upload(fileName, file, {
-      upsert: true,
-    });
-
-  if (error) {
-    alert(error.message);
-    return;
-  }
-
-  const { data } = supabase.storage
-    .from("profile-images")
-    .getPublicUrl(fileName);
-
-  const imageUrl = data.publicUrl;
-
-  await supabase
-    .from("profiles")
-    .update({
-      profile_image: imageUrl,
-    })
-    .eq("id", user.id);
-
-  location.reload();
-});

@@ -11,15 +11,19 @@
   <body>
     <div id="header"></div>
     <div class="profile-card">
-      <div class="profile-image">
+      <div class="profile-image" id="profile-upload-area">
         <img
           id="profile-img"
           src="https://placehold.co/150x150"
           alt="프로필 이미지"
         />
+
+        <div class="profile-overlay">사진 변경</div>
       </div>
 
-      <input type="file" id="image-upload" accept="image/*" />
+      <input type="file" id="image-upload" accept="image/*" hidden />
+
+      <!-- <input type="file" id="image-upload" accept="image/*" /> -->
 
       <h2 id="nickname">닉네임</h2>
 

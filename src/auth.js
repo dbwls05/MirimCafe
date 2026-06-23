@@ -188,26 +188,26 @@ async function checkLogin() {
       });
     });
   }
-  const profileBtn = document.getElementById("profile-btn");
-  const dropdownMenu = document.getElementById("dropdown-menu");
+  // const profileBtn = document.getElementById("profile-btn");
+  // const dropdownMenu = document.getElementById("dropdown-menu");
 
-  profileBtn.addEventListener("click", () => {
-    dropdownMenu.classList.toggle("show");
-  });
-  document.getElementById("profile-page-btn").addEventListener("click", () => {
-    location.href = "./profile.html";
-  });
+  // profileBtn.addEventListener("click", () => {
+  //   dropdownMenu.classList.toggle("show");
+  // });
+  // document.getElementById("profile-page-btn").addEventListener("click", () => {
+  //   location.href = "./profile.html";
+  // });
 
-  document.getElementById("settings-btn").addEventListener("click", () => {
-    location.href = "./settings.html";
-  });
+  // document.getElementById("settings-btn").addEventListener("click", () => {
+  //   location.href = "./settings.html";
+  // });
 
-  document.getElementById("logout-btn").addEventListener("click", async () => {
-    await supabase.auth.signOut();
+  // document.getElementById("logout-btn").addEventListener("click", async () => {
+  //   await supabase.auth.signOut();
 
-    alert("로그아웃 되었습니다.");
-    location.reload();
-  });
+  //   alert("로그아웃 되었습니다.");
+  //   location.reload();
+  // });
 }
 
 checkLogin();
