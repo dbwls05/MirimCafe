@@ -81,11 +81,6 @@ async function checkRole(cafe) {
     return;
   }
 
-  if (cafe.owner_id === user.id) {
-    joinBtn.style.display = "none";
-    return;
-  }
-
   const { data: member } = await supabase
     .from("cafe_members")
     .select("*")
@@ -98,11 +93,20 @@ async function checkRole(cafe) {
   } else {
     writeBtn.style.display = "none";
   }
-}
 
-document.getElementById("edit-cafe-btn").addEventListener("click", () => {
-  location.href = `edit-cafe.html?id=${cafeId}`;
-});
+  const editCafeBtn = document.getElementById("edit-cafe-btn");
+
+  if (cafe.owner_id === user.id) {
+    joinBtn.style.display = "none";
+    editCafeBtn.style.display = "inline-block";
+
+    editCafeBtn.addEventListener("click", () => {
+      location.href = `edit-cafe.html?id=${cafeId}`;
+    });
+
+    return;
+  }
+}
 
 document.getElementById("join-btn").addEventListener("click", async () => {
   const {
